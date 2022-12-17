@@ -9,6 +9,17 @@ import(
 
 )
 
+
+type RSS struct {
+	XMLName		xml.Name 
+	Channel		*Channel 
+}
+
+type Channel struct {
+	Title 		string	
+	ItemList	[]Item 
+}
+
 type Item struct {
 	Title 			string
 	Link 			string
@@ -17,8 +28,8 @@ type Item struct {
 }
 
 type News struct {
-	HeadLine		string
-	HeadLineLink	string
+	HeadLine			string
+	HeadLineLink		string
 }
 
 func main() {
