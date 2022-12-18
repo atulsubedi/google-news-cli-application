@@ -26,6 +26,12 @@ type Item struct {
 func main() {
 	var r RSS
 	data := readGoogleNews()
+	err :=	xml.Unmarshal(data, &r)
+
+	if err != nil{
+		fmt.Println("errro:", err)
+		os.Exit(1)
+	}
 }
 
 func getGoogleNews() *http.Response {
