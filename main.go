@@ -2,10 +2,10 @@ package main
 
 import (
 	"encoding/xml"
-	"io/ioutil"
-	"os"
 	"fmt"
 	"net/http"
+	"os"
+	"io/ioutil"
 )
 
 type RSS struct {
@@ -19,20 +19,24 @@ type Channel struct {
 }
 
 type Item struct {
-	Title     string `xml:"title"`
-	Link      string `xml:"link"`
+	Title string `xml:"title"`
+	Link  string `xml:"link"`
 }
-
 
 func main() {
 	var r RSS
-	readGoogleNews()
+	data := readGoogleNews()
 }
 
 func getGoogleNews() *http.Response {
-		http.Get("")
+	resp, err := http.Get("https://news.google.com/rss?hl=en-US&gl=US&ceid=US:en")
+
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
 }
 
 func readGoogleNews() []byte {
-	getGoogleNews()
+	getGoogleNews
 }
