@@ -3,9 +3,9 @@ package main
 import (
 	"encoding/xml"
 	"fmt"
+	"io/ioutil"
 	"net/http"
 	"os"
-	"io/ioutil"
 )
 
 type RSS struct {
@@ -35,8 +35,16 @@ func getGoogleNews() *http.Response {
 		fmt.Println(err)
 		os.Exit(1)
 	}
+	return resp
 }
 
 func readGoogleNews() []byte {
-	getGoogleNews
+	resp := getGoogleNews()
+	data, err := ioutil.ReadAll(resp.Body)
+
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
+	return data
 }
