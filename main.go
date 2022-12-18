@@ -1,45 +1,38 @@
 package main
 
-import(
-	"fmt"
+import (
 	"encoding/xml"
-	"os"
 	"io/ioutil"
+	"os"
+	"fmt"
 	"net/http"
-
 )
 
-
 type RSS struct {
-	XMLName		xml.Name			`xml:"rss"`			 
-	Channel		*Channel			`xml:"channel"` 
+	XMLName xml.Name `xml:"rss"`
+	Channel *Channel `xml:"channel"`
 }
 
 type Channel struct {
-	Title 		string				`xml:"title"`	
-	ItemList	[]Item				`xml:"item"` 
+	Title    string `xml:"title"`
+	ItemList []Item `xml:"item"`
 }
 
 type Item struct {
-	Title 			string			`xml:"title"`	
-	Link 			string			`xml:"link"`	
-	Traffic 		string			`xml:"approx_traffic"`
-	NewsItems		[]News			`xml:"news_item"`
+	Title     string `xml:"title"`
+	Link      string `xml:"link"`
 }
 
-type News struct {
-	HeadLine		string			`xml:"news_item_title"`
-	HeadLineLink		string		`xml:"news_item_url"`
-}
 
 func main() {
-	readGoogleTrends
+	var r RSS
+	readGoogleNews()
 }
 
-func readGoogleTrends(){
-	getGoogleTrends
+func getGoogleNews() *http.Response {
+		http.Get("")
 }
 
-func getGoogleTrends(){
-
+func readGoogleNews() []byte {
+	getGoogleNews()
 }
