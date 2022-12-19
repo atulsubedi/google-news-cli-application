@@ -39,7 +39,8 @@ func main() {
 		rank := (i + 1)
 		fmt.Println("#",rank)
 		fmt.Println("Search Term:",r.Channel.ItemList[i].Title)
-		fmt.Println("")
+		fmt.Println("Link to the News:",r.Channel.ItemList[i].Link)
+
 	}
 }
 
