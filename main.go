@@ -26,11 +26,20 @@ type Item struct {
 func main() {
 	var r RSS
 	data := readGoogleNews()
-	err :=	xml.Unmarshal(data, &r)
+	err := xml.Unmarshal(data, &r)
 
-	if err != nil{
+	if err != nil {
 		fmt.Println("errro:", err)
 		os.Exit(1)
+	}
+	fmt.Println("\n Below are all the Google News For Today !")
+	fmt.Println("--------------------------------------------")
+
+	for i := range r.Channel.ItemList {
+		rank := (i + 1)
+		fmt.Println("#",rank)
+		fmt.Println("Search Term:",r.Channel.ItemList[i].Title)
+		fmt.Println("")
 	}
 }
 
@@ -53,4 +62,5 @@ func readGoogleNews() []byte {
 		os.Exit(1)
 	}
 	return data
+
 }
