@@ -40,7 +40,7 @@ func main() {
 		fmt.Println("#",rank)
 		fmt.Println("Search Term:",r.Channel.ItemList[i].Title)
 		fmt.Println("Link to the News:",r.Channel.ItemList[i].Link)
-
+		fmt.Println("----------------------------------------")
 	}
 }
 
